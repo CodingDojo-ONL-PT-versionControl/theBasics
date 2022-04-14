@@ -23,3 +23,11 @@ https://python-instructormelissa.github.io/terminalGit/
 - git add (file name) or * or . (* and . will add all changes) - gitignore doesn't always get added through * or .
 - git commit -m "" => between quotes goes a relevant message and this command creates a snapshot
 - git push => pushes the committed changes to github or other version control services
+- git pull => brings all changes on the remote repo down to your device
+
+
+to add the repo link to a repo you created locally first => git remote set-url origin https://<token>@github.com/<username>/<reponame>.git
+
+
+
+Just adding content
