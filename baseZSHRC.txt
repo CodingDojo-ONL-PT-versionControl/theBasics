@@ -1,0 +1,48 @@
+export PATH=${PATH}:/usr/local/mysql/bin
+
+alias back='cd ~/coding/'
+alias dojoipy='cd ~/coding/work/CodingDojo/instruction/python/'
+alias dojoiwf='cd ~/coding/work/CodingDojo/instruction/webFun/'
+alias py='python3/'
+alias djangoEnv='source ~/coding/environments/generalEnv/bin/activate/'
+alias rundjango='py manage.py runserver'
+alias makemigrations='py manage.py makemigrations'
+alias migrate='py manage.py migrate'
+alias createsuperuser='py manage.py createsuperuser'
+alias pipenv='python3 -m pipenv'
+alias installflask='pipenv install flask PyMySQL flask-bcrypt'
+alias flaskEnv='pipenv shell'
+alias runflask='py server.py'
+
+
+mkDjango () {
+    mkdir $1
+    cd $1
+    django-admin startproject $1 .
+    py manage.py startapp $1App
+}
+runMigrate () {
+    makemigrations
+    migrate
+}
+startFlask () {
+    installflask
+    flaskEnv
+}
+mkFlask () {
+    mkdir app
+    mkdir app/config app/controllers app/models app/static app/templates
+    mkdir app/static/css app/static/js app/static/images
+    touch app/controllers/public.py app/controllers/private.py app/models/user.py app/templates/index.html app/templates/menu.html app/templates/dashboard.html
+    touch app/static/css/styles.less app/static/js/scripts.js
+}
+
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:git*' formats "- (%b) "
+precmd() {
+    vcs_info
+}
+setopt prompt_subst
+prompt='HoneyBee@iMac 🐝: %~/ ${vcs_info_msg_0_}> '
